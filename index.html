@@ -157,6 +157,12 @@
       transform: translateY(-1px);
     }
 
+    .nav a.active {
+      color: var(--text);
+      background: rgba(241, 201, 140, 0.14);
+      box-shadow: inset 0 0 0 1px rgba(241, 201, 140, 0.08);
+    }
+
     .nav a:focus-visible,
     .button:focus-visible {
       outline: 2px solid rgba(241, 201, 140, 0.55);
@@ -213,6 +219,15 @@
       opacity: 0.9;
     }
 
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 24px;
+      border-radius: 28px;
+      border: 1px solid rgba(241, 201, 140, 0.06);
+      pointer-events: none;
+    }
+
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -266,6 +281,73 @@
       color: var(--muted);
       font-size: 0.92rem;
       line-height: 1.6;
+    }
+
+    .starfield {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .star {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255, 245, 232, 0.9);
+      box-shadow: 0 0 18px rgba(241, 201, 140, 0.28);
+      animation: pulse 5s ease-in-out infinite;
+    }
+
+    .star::after {
+      content: "";
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(241, 201, 140, 0.22), transparent 70%);
+    }
+
+    .star-1 {
+      top: 14%;
+      right: 18%;
+      animation-delay: 0s;
+    }
+
+    .star-2 {
+      top: 28%;
+      right: 30%;
+      width: 4px;
+      height: 4px;
+      animation-delay: 1.2s;
+    }
+
+    .star-3 {
+      bottom: 24%;
+      right: 20%;
+      width: 5px;
+      height: 5px;
+      animation-delay: 2.4s;
+    }
+
+    .scroll-cue {
+      position: relative;
+      z-index: 1;
+      margin-top: 28px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(244, 234, 215, 0.72);
+      font-size: 0.86rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .scroll-cue::before {
+      content: "";
+      width: 38px;
+      height: 1px;
+      background: rgba(241, 201, 140, 0.28);
     }
 
     .hero-actions {
@@ -644,6 +726,56 @@
       line-height: 1.7;
     }
 
+    .index-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .index-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 220px;
+    }
+
+    .index-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -40px -60px auto;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(241, 201, 140, 0.14), transparent 68%);
+      pointer-events: none;
+    }
+
+    .index-card strong {
+      display: inline-flex;
+      margin-bottom: 14px;
+      color: var(--gold);
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .index-card h3 {
+      font-size: 1.45rem;
+      margin-bottom: 12px;
+    }
+
+    .index-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .index-card .index-link {
+      display: inline-flex;
+      margin-top: 18px;
+      color: #fff4e5;
+      font-size: 0.92rem;
+    }
+
     .atlas {
       display: grid;
       grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
@@ -753,6 +885,32 @@
       flex-wrap: wrap;
     }
 
+    @keyframes pulse {
+      0%,
+      100% {
+        transform: scale(0.9);
+        opacity: 0.45;
+      }
+
+      50% {
+        transform: scale(1.2);
+        opacity: 1;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
     @media (max-width: 1080px) {
       .hero,
       .atlas,
@@ -760,7 +918,8 @@
       .intro-grid,
       .relationship-grid,
       .protocol-grid,
-      .chronicle-grid {
+      .chronicle-grid,
+      .index-grid {
         grid-template-columns: 1fr;
       }
 
@@ -848,6 +1007,10 @@
 
       .hero-meta {
         grid-template-columns: 1fr;
+      }
+
+      .scroll-cue {
+        font-size: 0.8rem;
       }
 
       .hero-actions {
@@ -946,7 +1109,8 @@
       .signal-item,
       .brief-item,
       .mission-item,
-      .map-node {
+      .map-node,
+      .index-card {
         padding: 14px;
       }
     }
@@ -961,10 +1125,10 @@
         <span class="brand-note">Interstellar Fabrication Archive</span>
       </a>
       <nav class="nav" aria-label="主导航">
-        <a href="#characters">角色档案</a>
-        <a href="#abilities">异能目录</a>
-        <a href="#atlas">航线区域</a>
-        <a href="#missions">近期任务</a>
+        <a href="#characters" data-nav="characters">角色档案</a>
+        <a href="#abilities" data-nav="abilities">异能目录</a>
+        <a href="#atlas" data-nav="atlas">航线区域</a>
+        <a href="#missions" data-nav="missions">近期任务</a>
       </nav>
     </div>
   </header>
@@ -972,6 +1136,11 @@
   <main id="top">
     <section class="hero">
       <article class="hero-card">
+        <div class="starfield" aria-hidden="true">
+          <span class="star star-1"></span>
+          <span class="star star-2"></span>
+          <span class="star star-3"></span>
+        </div>
         <div class="hero-copy">
           <div class="eyebrow">伪档案馆已连接</div>
           <h1>光年之外</h1>
@@ -984,6 +1153,7 @@
             <a class="button button-secondary" href="#chronicle">查看航线纪要</a>
             <a class="button button-ghost" href="https://github.com/sijin-xb/light-wiki">查看仓库</a>
           </div>
+          <div class="scroll-cue">继续下潜</div>
         </div>
 
         <div class="hero-meta">
@@ -1420,10 +1590,82 @@
       </section>
     </section>
 
+    <section class="section" id="index">
+      <div class="section-heading">
+        <div>
+          <div class="section-index">Section 05</div>
+          <h2>观测索引</h2>
+          <p>如果把首页看成一座档案前厅，这里就是四个最适合继续扩写的入口。它们既能独立成长，也能反过来让整座站看起来更完整。</p>
+        </div>
+      </div>
+
+      <div class="index-grid">
+        <article class="card index-card">
+          <strong>Index 01</strong>
+          <h3>人物分卷</h3>
+          <p>把似锦、折光邮差、残月、惜别、猫腻拆成单页，补完外貌、习惯、目击记录和关系碎片，人物会立得更快。</p>
+          <a class="index-link" href="#characters">返回核心住民</a>
+        </article>
+        <article class="card index-card">
+          <strong>Index 02</strong>
+          <h3>事件档案</h3>
+          <p>与其继续写说明，不如把“时间签收案”“冷库录音”“灯塔浮标”扩成独立事件条目，世界观会显得更像真实档案库。</p>
+          <a class="index-link" href="#chronicle">查看航线纪要</a>
+        </article>
+        <article class="card index-card">
+          <strong>Index 03</strong>
+          <h3>区域图册</h3>
+          <p>航线图已经有了骨架，下一步最适合增加的是每个区域的传闻来源、风险等级和常驻目击者名单。</p>
+          <a class="index-link" href="#atlas">跳到航线区域</a>
+        </article>
+        <article class="card index-card">
+          <strong>Index 04</strong>
+          <h3>站点识别</h3>
+          <p>站点名是“光年之外”，账号名是 `sijin-xb`。这两者分离反而是好事，品牌感和发布身份可以各自稳定存在。</p>
+          <a class="index-link" href="https://sijin-xb.github.io/light-wiki/">打开当前站点</a>
+        </article>
+      </div>
+    </section>
+
     <footer class="footer">
       <span>光年之外：一座把失真记录装订得过分整洁的边缘档案馆。</span>
-      <span>档案级别：公开阅览</span>
+      <span>档案级别：公开阅览 · 发布者：sijin-xb</span>
     </footer>
   </main>
+  <script>
+    const sections = ["characters", "abilities", "atlas", "missions"];
+    const navLinks = document.querySelectorAll("[data-nav]");
+
+    const setActiveNav = (id) => {
+      navLinks.forEach((link) => {
+        link.classList.toggle("active", link.dataset.nav === id);
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible) {
+          setActiveNav(visible.target.id);
+        }
+      },
+      {
+        rootMargin: "-35% 0px -45% 0px",
+        threshold: [0.2, 0.5, 0.8]
+      }
+    );
+
+    sections.forEach((id) => {
+      const section = document.getElementById(id);
+      if (section) {
+        observer.observe(section);
+      }
+    });
+
+    setActiveNav("characters");
+  </script>
 </body>
 </html>
