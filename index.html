@@ -175,6 +175,10 @@
       padding: 32px 0 64px;
     }
 
+    section[id] {
+      scroll-margin-top: 104px;
+    }
+
     .hero {
       min-height: calc(100vh - 120px);
       display: grid;
@@ -929,6 +933,11 @@
     }
 
     @media (max-width: 720px) {
+      .topbar {
+        position: static;
+        backdrop-filter: blur(10px);
+      }
+
       .topbar-inner,
       main {
         width: min(calc(100% - 20px), var(--content-width));
@@ -936,19 +945,28 @@
 
       .topbar-inner {
         min-height: auto;
-        padding: 14px 0 10px;
+        padding: 12px 0 8px;
         align-items: flex-start;
         flex-direction: column;
-        gap: 12px;
+        gap: 10px;
+      }
+
+      .brand {
+        gap: 2px;
+      }
+
+      .brand-note {
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
       }
 
       .nav {
         justify-content: flex-start;
         flex-wrap: nowrap;
-        gap: 10px;
+        gap: 8px;
         width: 100%;
         overflow-x: auto;
-        padding-bottom: 6px;
+        padding: 0 0 4px;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
       }
@@ -959,8 +977,8 @@
 
       .nav a {
         flex: 0 0 auto;
-        font-size: 0.88rem;
-        padding: 8px 11px;
+        font-size: 0.84rem;
+        padding: 7px 10px;
       }
 
       .hero-card,
@@ -988,7 +1006,7 @@
 
       .hero {
         gap: 18px;
-        padding-top: 12px;
+        padding-top: 4px;
       }
 
       .hero-copy p,
@@ -1036,6 +1054,10 @@
         margin-bottom: 18px;
       }
 
+      section[id] {
+        scroll-margin-top: 18px;
+      }
+
       .atlas-map {
         min-height: auto;
         display: grid;
@@ -1081,7 +1103,7 @@
 
     @media (max-width: 420px) {
       main {
-        padding: 22px 0 48px;
+        padding: 18px 0 44px;
       }
 
       .brand-mark {
