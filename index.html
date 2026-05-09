@@ -1,22 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>光年之外 | 伪星际档案馆</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Description">
+  <meta
+    name="description"
+    content="光年之外，一个瞎编但认真排版的星际档案馆。"
+  >
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <link
+    rel="stylesheet"
+    href="//cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css"
+  >
+  <style>
+    :root {
+      --theme-color: #b8472f;
+      --theme-color-secondary: #0d6e6e;
+      --base-background-color: #f7f1e8;
+      --base-color: #261914;
+      --heading-color: #24130f;
+      --sidebar-background: linear-gradient(180deg, #1b222f 0%, #10161f 100%);
+      --sidebar-name-color: #f4ecdd;
+      --sidebar-nav-link-color: rgba(244, 236, 221, 0.84);
+      --sidebar-nav-link-color--active: #f5b15d;
+      --sidebar-nav-link-background-color--active: rgba(245, 177, 93, 0.12);
+      --cover-background-color: #10161f;
+      --cover-color: #f4ecdd;
+      --cover-heading-color: #fff5e8;
+      --cover-button-background: #b8472f;
+      --cover-button-color: #fff4ea;
+      --cover-button-border: none;
+      --code-inline-background: rgba(184, 71, 47, 0.08);
+      --blockquote-border-color: #b8472f;
+      --selection-color: rgba(184, 71, 47, 0.14);
+      --link-color: #9f3722;
+      --link-color--hover: #d15d3d;
+      --table-row-odd-background: rgba(16, 22, 31, 0.03);
+    }
+
+    body {
+      background:
+        radial-gradient(circle at top, rgba(245, 177, 93, 0.18), transparent 28%),
+        linear-gradient(180deg, #f8f2e8 0%, #f2e7d8 100%);
+    }
+
+    .cover-main {
+      max-width: 760px;
+    }
+
+    .cover-main > p:last-child a:last-child {
+      background: transparent;
+      border: 1px solid rgba(255, 244, 234, 0.48);
+    }
+
+    .markdown-section {
+      max-width: 900px;
+    }
+
+    .markdown-section h1,
+    .markdown-section h2,
+    .markdown-section h3 {
+      letter-spacing: 0.02em;
+    }
+
+    .markdown-section strong {
+      color: #5d2015;
+    }
+
+    .sidebar-toggle {
+      background: rgba(16, 22, 31, 0.94);
+    }
+  </style>
 </head>
 <body>
   <div id="app"></div>
   <script>
     window.$docsify = {
-      name: '',
-      repo: ''
-    }
+      name: '光年之外',
+      nameLink: '#/',
+      repo: '123wwwbljik/light-wiki',
+      homepage: 'README.md',
+      loadSidebar: true,
+      loadNavbar: true,
+      coverpage: true,
+      auto2top: true,
+      subMaxLevel: 3,
+      themeColor: '#b8472f',
+      search: {
+        placeholder: '搜索档案',
+        noData: '没有检索到相关记录',
+      },
+    };
   </script>
-  <!-- Docsify v4 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
 </body>
 </html>
