@@ -1,8 +1,0 @@
-- [档案总览](README.md)
-- 世界观索引
-  - [宇宙底稿](README.md#宇宙底稿)
-  - [核心住民](README.md#核心住民)
-  - [异能目录](README.md#异能目录)
-  - [航线与区域](README.md#航线与区域)
-  - [近期任务](README.md#近期任务)
-  - [编辑规则](README.md#编辑规则)

@@ -1,3 +1,0 @@
-- [总览](#/README)
-- [档案入口](#/)
-- [GitHub](https://github.com/123wwwbljik/light-wiki)
