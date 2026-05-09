@@ -6,6 +6,14 @@
 
 页面入口是 [index.html](./index.html)，当前已经做成单页展示，不再依赖 Docsify。
 
+## 线上地址
+
+如果 GitHub Pages 已经切到新用户名，项目页地址应为：
+
+`https://sijin-xb.github.io/light-wiki/`
+
+如果仍旧看到旧地址，通常是 Pages 还没完成刷新。
+
 内容基调是“像正式档案，但证据永远缺一点”：
 
 - 人物档案
